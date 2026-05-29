@@ -7,10 +7,10 @@
     <style>
         /* 全体のスタイル */
         body {
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            font-family: 'Hiragino Maru Gothic ProN', 'ヒラギノ丸ゴ ProN W4', 'Comic Sans MS', 'Rounded M+ 1c', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f4f7f6;
+            color: #2f3640;
+            background-color: #fffdf5; /* 薄いクリーム色 */
             margin: 0;
             padding: 20px;
         }
@@ -19,59 +19,71 @@
             margin: 0 auto;
             background: #fff;
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 25px; /* 大きな角丸 */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border: 4px solid #f5f6fa;
         }
         
         /* 見出しのスタイル */
         h1 {
             text-align: center;
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
+            background: #ff7675; /* ポップなピンク赤 */
+            color: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 6px 0 #d63031; /* くっきりした影 */
+            border: none;
+            margin-top: 0;
         }
         h2 {
-            color: #2c3e50;
-            border-left: 5px solid #3498db;
-            padding-left: 10px;
-            margin-top: 40px;
+            background: #74b9ff; /* ポップな青 */
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 5px 0 #0984e3;
+            margin-top: 50px;
+            display: inline-block;
         }
         h3 {
-            color: #34495e;
+            color: #2d3436;
+            font-size: 1.3em;
         }
 
         /* 陽極・陰極のボックススタイル（視覚的区別） */
         .box {
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
         }
         .cathode-box {
-            background-color: #e3f2fd; /* 薄い青 */
-            border: 1px solid #90caf9;
+            background-color: #e0f7fa;
+            border: 4px dashed #00bcd4;
         }
         .anode-box {
-            background-color: #ffebee; /* 薄い赤 */
-            border: 1px solid #ef9a9a;
+            background-color: #ffebee;
+            border: 4px dashed #f44336;
         }
 
         /* 反応式のスタイル */
         .reaction {
             font-family: 'Courier New', Courier, monospace;
-            background-color: #282c34;
-            color: #abb2bf;
-            padding: 8px;
-            border-radius: 4px;
+            background-color: #2d3436;
+            color: #dfe6e9;
+            padding: 8px 12px;
+            border-radius: 8px;
             text-align: center;
             font-size: 0.95em;
             letter-spacing: 1px;
             margin-top: 10px;
             display: inline-block;
+            font-weight: bold;
+            border: 3px solid #636e72;
         }
 
         /* =========================================
-           フローチャート（図解）のスタイル (Grid)
-           ========================================= */
+            フローチャート（図解）のスタイル (Grid)
+            ========================================= */
         .flowchart {
             display: grid;
             grid-template-columns: 1fr 60px 1.2fr;
@@ -81,11 +93,11 @@
             row-gap: 5px;
         }
         .flow-question {
-            border-radius: 8px;
+            border-radius: 15px;
             padding: 15px;
             text-align: center;
             font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 0 rgba(0,0,0,0.15); /* ポップな影 */
             z-index: 2;
             line-height: 1.4;
         }
@@ -105,17 +117,17 @@
         }
         .flow-yes-label {
             position: absolute;
-            top: -22px;
+            top: -24px;
             left: 50%;
             transform: translateX(-50%);
             font-weight: bold;
-            font-size: 0.85em;
+            font-size: 0.9em;
         }
         .flow-result {
-            border-radius: 8px;
+            border-radius: 15px;
             padding: 15px;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 0 rgba(0,0,0,0.15); /* ポップな影 */
         }
         .flow-arrow-down {
             height: 40px;
@@ -145,18 +157,18 @@
         }
 
         /* 陽極用カラー */
-        .anode-q { background-color: #fff3e0; border: 2px solid #ffb74d; }
-        .anode-arrow { background-color: #ff9800; }
-        .anode-arrow::after { border-left: 12px solid #ff9800; }
-        .anode-label { color: #e65100; }
-        .anode-r { background-color: #ffebee; border: 2px solid #ef9a9a; }
+        .anode-q { background-color: #fff3e0; border: 3px solid #ff9800; color: #e65100; }
+        .anode-arrow { background-color: #ff9800; height: 5px; }
+        .anode-arrow::after { border-left: 14px solid #ff9800; top: -4.5px; }
+        .anode-label { color: #e65100; background: #fff; padding: 2px 8px; border-radius: 10px; border: 2px solid #ff9800; }
+        .anode-r { background-color: #ffcdd2; border: 3px solid #f44336; color: #b71c1c; }
 
         /* 陰極用カラー */
-        .cathode-q { background-color: #e3f2fd; border: 2px solid #64b5f6; }
-        .cathode-arrow { background-color: #2196f3; }
-        .cathode-arrow::after { border-left: 12px solid #2196f3; }
-        .cathode-label { color: #0d47a1; }
-        .cathode-r { background-color: #e8eaf6; border: 2px solid #9fa8da; }
+        .cathode-q { background-color: #e1f5fe; border: 3px solid #03a9f4; color: #01579b; }
+        .cathode-arrow { background-color: #03a9f4; height: 5px; }
+        .cathode-arrow::after { border-left: 14px solid #03a9f4; top: -4.5px; }
+        .cathode-label { color: #0277bd; background: #fff; padding: 2px 8px; border-radius: 10px; border: 2px solid #03a9f4; }
+        .cathode-r { background-color: #c5cae9; border: 3px solid #3f51b5; color: #1a237e; }
         
         @media (max-width: 600px) {
             .flowchart {
@@ -178,16 +190,34 @@
         /* テーブル */
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate; /* 角丸にするため */
+            border-spacing: 0;
             margin-top: 20px;
+            border: 3px solid #2d3436;
+            border-radius: 12px;
+            overflow: hidden;
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
+            border-bottom: 2px solid #2d3436;
+            border-right: 2px solid #2d3436;
+            padding: 15px 10px;
+            text-align: center;
+        }
+        th:last-child, td:last-child {
+            border-right: none;
+        }
+        tr:last-child td {
+            border-bottom: none;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #ffeaa7; /* ポップな黄色 */
+            color: #d35400;
+            font-size: 1.1em;
+        }
+        
+        /* 水溶液（行）ごとに色を交互に変える（2色以内） */
+        tr:nth-child(even) {
+            background-color: #f1f2f6; /* 明るいグレー */
         }
         
         .highlight {
@@ -195,94 +225,110 @@
             color: #e74c3c;
         }
 
+        /* 太字部分に赤マーカーを引くスタイル */
+        strong {
+            background: linear-gradient(transparent 60%, #ffcdd2 60%);
+        }
+
         /* =========================================
-           アニメーションセクションのスタイル
-           ========================================= */
+            アニメーションセクションのスタイル
+            ========================================= */
         .anim-section {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
+            background: #fff9c4; /* 明るい黄色ベース */
+            padding: 25px;
+            border-radius: 20px;
             margin: 40px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 0 #fbc531;
             text-align: center;
-            border-top: 5px solid #f39c12;
+            border: 4px solid #fbc531;
         }
         .anim-title {
-            color: #d35400;
-            margin-bottom: 5px;
+            color: #e1b12c;
+            margin-bottom: 10px;
+            font-size: 1.6em;
+            text-shadow: 2px 2px 0 #fff; /* 文字を縁取るポップな装飾 */
         }
         #anim-desc {
-            background: #f1f8e9;
+            background: #fff;
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 15px;
             font-weight: bold;
-            color: #33691e;
+            color: #e15f41;
             min-height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
-            border: 1px solid #c5e1a5;
+            margin-bottom: 25px;
+            border: 3px dashed #e15f41;
+            font-size: 1.1em;
         }
         #start-btn {
-            background: #f39c12; color: #fff;
-            border: none; padding: 12px 25px;
-            font-size: 16px; font-weight: bold;
-            border-radius: 30px; cursor: pointer;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-            transition: all 0.3s;
+            background: #ff9f43; color: #fff;
+            border: 4px solid #ee5253; padding: 15px 35px;
+            font-size: 20px; font-weight: bold;
+            border-radius: 40px; cursor: pointer;
+            box-shadow: 0 6px 0 #ee5253;
+            transition: all 0.1s;
+            font-family: inherit;
         }
-        #start-btn:hover { background: #e67e22; transform: translateY(-2px); }
-        #start-btn:disabled { background: #bdc3c7; cursor: not-allowed; transform: none; box-shadow: none; }
+        #start-btn:hover { background: #ffaa50; }
+        #start-btn:active { transform: translateY(6px); box-shadow: none; margin-bottom: -6px; }
+        #start-btn:disabled { background: #c8d6e5; border-color: #8395a7; box-shadow: 0 6px 0 #8395a7; cursor: not-allowed; transform: none; margin-bottom: 0;}
 
         /* ビーカーと回路のデザイン */
         .anim-wrapper {
             position: relative;
             width: 300px;
             height: 220px;
-            margin: 100px auto 30px;
-            background: linear-gradient(to bottom, rgba(225,245,254,0.3) 0%, rgba(179,229,252,0.8) 100%);
-            border: 3px solid #90a4ae;
+            margin: 100px auto 40px;
+            background: linear-gradient(to bottom, rgba(129, 236, 236, 0.3) 0%, rgba(0, 206, 201, 0.6) 100%);
+            border: 5px solid #0abde3;
             border-top: none;
-            border-radius: 0 0 20px 20px;
+            border-radius: 0 0 30px 30px; /* ぷっくりさせる */
         }
         .battery {
             position: absolute;
-            top: -80px; left: 110px;
-            width: 80px; height: 40px;
-            background: #ffb74d;
-            border: 2px solid #ef6c00;
-            border-radius: 5px;
-            line-height: 36px;
+            top: -90px; left: 100px;
+            width: 100px; height: 50px;
+            background: #ff6b6b;
+            border: 4px solid #ee5253;
+            border-radius: 10px;
+            line-height: 42px;
             font-weight: bold;
             color: #fff;
+            font-size: 18px;
             z-index: 2;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
         }
-        .battery::before { content: "+"; position: absolute; left: 10px; font-size: 18px; }
-        .battery::after { content: "-"; position: absolute; right: 15px; font-size: 20px; }
+        .battery::before { content: "+"; position: absolute; left: 10px; font-size: 24px; }
+        .battery::after { content: "-"; position: absolute; right: 15px; font-size: 28px; }
 
-        .wire { background: #546e7a; position: absolute; }
-        .wire-h-l { top: -60px; left: 68px; width: 42px; height: 4px; }
-        .wire-v-l { top: -60px; left: 68px; width: 4px; height: 60px; }
-        .wire-h-r { top: -60px; left: 190px; width: 42px; height: 4px; }
-        .wire-v-r { top: -60px; left: 228px; width: 4px; height: 60px; }
+        .wire { background: #576574; position: absolute; }
+        .wire-h-l { top: -65px; left: 63px; width: 42px; height: 6px; }
+        .wire-v-l { top: -65px; left: 63px; width: 6px; height: 65px; }
+        .wire-h-r { top: -65px; left: 195px; width: 42px; height: 6px; }
+        .wire-v-r { top: -65px; left: 231px; width: 6px; height: 65px; }
 
         .electrode {
             position: absolute;
             bottom: 0;
-            width: 40px;
+            width: 44px;
             height: 150px;
-            background: #37474f;
+            background: #2f3640;
             color: white;
-            font-size: 12px;
+            font-size: 14px;
+            font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             z-index: 1;
+            border-radius: 5px 5px 0 0;
+            border: 2px solid #718093;
+            border-bottom: none;
         }
-        .anode { left: 50px; border-radius: 3px 3px 0 0; }
-        .cathode { left: 210px; border-radius: 3px 3px 0 0; }
+        .anode { left: 45px; }
+        .cathode { left: 210px; }
 
         /* 動く粒子（イオン、電子、泡など） */
         .particle {
@@ -419,32 +465,32 @@
         <tr>
             <th>水溶液</th>
             <th>電極 (陽/陰)</th>
-            <th>陽極(＋)の生成物</th>
-            <th>陰極(－)の生成物</th>
+            <th>陽極(＋)の反応</th>
+            <th>陰極(－)の反応</th>
         </tr>
         <tr>
-            <td>塩化銅(II)水溶液 (CuCl<sub>2</sub>)</td>
+            <td>塩化銅(II)水溶液<br><small>(CuCl<sub>2</sub>)</small></td>
             <td>C / C</td>
-            <td>塩素 (Cl<sub>2</sub>)</td>
-            <td>銅 (Cu)</td>
+            <td>塩素 (Cl<sub>2</sub>) 発生<br><div class="reaction" style="font-size: 0.85em; padding: 4px; margin-top: 5px;">2Cl<sup>-</sup> &rarr; Cl<sub>2</sub> + 2e<sup>-</sup></div></td>
+            <td>銅 (Cu) 析出<br><div class="reaction" style="font-size: 0.85em; padding: 4px; margin-top: 5px;">Cu<sup>2+</sup> + 2e<sup>-</sup> &rarr; Cu</div></td>
         </tr>
         <tr>
-            <td>塩化ナトリウム水溶液 (NaCl)</td>
+            <td>塩化ナトリウム水溶液<br><small>(NaCl)</small></td>
             <td>C / C</td>
-            <td>塩素 (Cl<sub>2</sub>)</td>
-            <td>水素 (H<sub>2</sub>)</td>
+            <td>塩素 (Cl<sub>2</sub>) 発生<br><div class="reaction" style="font-size: 0.85em; padding: 4px; margin-top: 5px;">2Cl<sup>-</sup> &rarr; Cl<sub>2</sub> + 2e<sup>-</sup></div></td>
+            <td>水素 (H<sub>2</sub>) 発生<br><div class="reaction" style="font-size: 0.85em; padding: 4px; margin-top: 5px;">2H<sub>2</sub>O + 2e<sup>-</sup> &rarr; H<sub>2</sub> + 2OH<sup>-</sup></div></td>
         </tr>
         <tr>
-            <td>水酸化ナトリウム水溶液 (NaOH)</td>
+            <td>水酸化ナトリウム水溶液<br><small>(NaOH)</small></td>
             <td>Pt / Pt</td>
-            <td>酸素 (O<sub>2</sub>)</td>
-            <td>水素 (H<sub>2</sub>)</td>
+            <td>酸素 (O<sub>2</sub>) 発生<br><div class="reaction" style="font-size: 0.85em; padding: 4px; margin-top: 5px;">4OH<sup>-</sup> &rarr; O<sub>2</sub> + 2H<sub>2</sub>O + 4e<sup>-</sup></div></td>
+            <td>水素 (H<sub>2</sub>) 発生<br><div class="reaction" style="font-size: 0.85em; padding: 4px; margin-top: 5px;">2H<sub>2</sub>O + 2e<sup>-</sup> &rarr; H<sub>2</sub> + 2OH<sup>-</sup></div></td>
         </tr>
         <tr>
-            <td>硫酸銅(II)水溶液 (CuSO<sub>4</sub>)</td>
-            <td><strong>Cu</strong> / Pt</td>
-            <td><strong>銅イオン (Cu<sup>2+</sup>) 電極溶解</strong></td>
-            <td>銅 (Cu)</td>
+            <td>硫酸銅(II)水溶液<br><small>(CuSO<sub>4</sub>)</small></td>
+            <td>Cu / Pt</td>
+            <td>銅(Cu) 電極溶解<br><div class="reaction" style="font-size: 0.85em; padding: 4px; margin-top: 5px;">Cu &rarr; Cu<sup>2+</sup> + 2e<sup>-</sup></div></td>
+            <td>銅 (Cu) 析出<br><div class="reaction" style="font-size: 0.85em; padding: 4px; margin-top: 5px;">Cu<sup>2+</sup> + 2e<sup>-</sup> &rarr; Cu</div></td>
         </tr>
     </table>
 
